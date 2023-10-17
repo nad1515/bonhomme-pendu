@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+.contenaire{
+    width: 80%;
+   padding: 150px;
+    border: 2px solid rgb(135, 188, 227);
+}
+.affiche-mots{
+    padding: 20px;
+    border: 2px solid rgb(110, 151, 211);
+    margin-bottom: 50px;
+    border-radius: 12px;
+
+}
+
+.alphabet{
+    border: 1px solid rgba(red, green, blue, alpha);
+    padding: 25px;
+    align-items: center;
+    border-radius: 12px;
+    font-size: large;
+    font-weight: bold;
+  }  
+  .image{
+    
+
+  }
