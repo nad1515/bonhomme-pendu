@@ -32,8 +32,8 @@ console.log(alphaClavier);
 
 
 
-  let monimage = document.createElement("div");
-  monimage.classList.add("image");
-  contenaire.appendChild(monimage);
+//   let monimage = document.createElement("div");
+//   monimage.classList.add("image");
+//   contenaire.appendChild(monimage);
 
-// //----------------------crée container img pendu----
+// // //----------------------crée container img pendu----
