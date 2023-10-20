@@ -1,11 +1,12 @@
 
+console.log("Script chargé");
 let alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 let listMot = ['REUSSITE','OPTIMISTE','JAVASCRIPT','DEVELOPPEMENT'];
 let essais = 8;
-let motadeviné = 'REUSSITE';  //le mot a deviné........
-let lettredeviné = [];  // pour stoker les lettres proposées 
-let monMot = []; // stocker le mot  deviner
-let stocklettre;  // stockées la lettre proposée
+// let motadevine = "REUSSITE";  //le mot a deviné........
+let lettredevine = [];  // pour stoker les lettres proposées 
+// let monMot = []; // stocker le mot  deviner
+let trouve = false;
 
 //............cree contenaire............
 
@@ -26,76 +27,95 @@ let alphaClavier = document.createElement("button");
 alphaClavier.classList.add("alphabtn");
 contenaire.appendChild(alphaClavier);
 alphaClavier.innerText = alphabet[index];
+ }
 
-console.log(alphaClavier);
+// c........creé l'image............
+let pendu = ["./assets/img/deux.png",
+              "./assets/img/trois.png",
+              "./assets/img/quatre.png",
+              "./assets/img/cinq.png",
+              "./assets/img/six.png",
+              "./assets/img/sept.png"];
 
-}
+let image = document.createElement("img");
+image.setAttribute("id", "pendu");
+image.setAttribute("src","./assets/img/un.png");
+document.body.appendChild(image);
+indeximg = 0;
+
 
 //-------------------------choix du mot mot............
 //choisir un mot aléatoire
 
- const mot = listMot[Math.floor(Math.random() * listMot.length)];
-console.log = (mot);
+let mot = listMot[Math.floor(Math.random() * listMot.length)];
+console.log(mot);
+mot = mot.split('');
+console.log(mot);
+    
+// ............afficher les lettres du mot a deviné..........
 
+let nbrRestant = mot.length;
 let tester = document.querySelectorAll(".alphabtn");
- console.log(tester);
+//  console.log(tester);
+  tester.forEach((unbutton) =>{
+     unbutton.addEventListener("click",(evenementClick) =>{
+        if(lettredevine.includes(unbutton.innerText)){
+          console.log("déja proposée")
+        }
+        else {
+          lettredevine.push(unbutton.innerText);
+          for (let index = 0; index < mot.length; index++) {
+            if(mot[index] == unbutton.innerText){
+              console.log("Le mot mystère contient bien la lettre : ", unbutton.innerText);
+              unbutton.style.backgroundColor = "green";
+              unbutton.setAttribute("desabled", "");
+              nbrRestant --;
+              trouve= true;
+            }        
+
+             if(nbrRestant ==0){
+              console.log("Gagner");
+             } 
+            }
+          }
+          if (trouve === false) {
+            essais--;
+            indeximg++;
+            image.setAttribute("src", pendu[indeximg]);
+            console.log("nombre de vies restantes = " + essais);
+          }
+          if(essais == 0){
+            console.log("perdu");
+          
+          }
+          trouve = false;
+
+
+
+        }
+     )});
+  
  
 
-let mesBoutons = document.querySelectorAll(".chiffres, .signes, .vergule");
-console.log(mesBoutons);
-mesBoutons.forEach((unBouton) => {
-  unBouton.addEventListener("click", (evenementClick) => {
-    // console.log(saisie.length)
-    if(saisie.length === 0)
-    document.querySelector(".calc-ecran").innerText = "";
-    document.querySelector(".calc-ecran").innerText += evenementClick.target.innerText;
-    saisie.push(evenementClick.target.innerText);
-  
-    
-  });
-});
+
+
+
+
+
+
  
 
-// let element = alphabet[index];
-// const events = ["mouseover", "click"];
-// alphabet.forEach(element => {
-  
-//     for (let index = 0; index < events.length; index++) {
-//         element.addEventListener(events[index], function() {
-//         element.classList.toggle("classe-toggle");
-//     })
-        
-//     }
-    
-// });
-
-// let tester = document.querySelectorAll(".alphabtn");
-// tester.forEach((unBtn ) => { 
-//   unBtn.addEventListener("click", (eventClick) => {
-//     //  console.log("Index : ", indexBtn + " " + unBtn);
-//     if (motadeviné.includes(unBtn.innerText)) {
-//             //  console.log("Vous avez déjà trouvé cette lettre.");
-      
-//             } else {
-//              motadeviné.push(unBtn.innerText);
-//              if (mot.includes(unBtn.innerText)) {
-//               //  console.log("il est examiner -c'est  OK");
-//                unBtn.style.backgroundColor = "gray";
-//                unBtn.setAttribute("disabled", "")
-//               essais--;
-//              }
-//             }
-//           });
-//   });
-    
 
 
-  
-  //  let displayword = document.querySelector(".word-display");
-  //     displayword.innerText = mot.split('');
-//  for (let index = 0; index < displayword.length; index++) {
-//     monMot.push(' _ ');
-   
+
+
+
+
+
+
+
+
+ 
 //    }
 // let examiner = document.querySelectorAll(".alpha-btn");
 // examiner.forEach((unBtn, indexBtn) => { 
