@@ -32,5 +32,8 @@ body{
     font-weight: bold;
     gap: 2rem;
     
-  }  
+} 
+   #gagne {
+    border: 1px solid red;
+} 
  
